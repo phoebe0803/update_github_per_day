@@ -14,6 +14,12 @@
 ```
  grep -rn "diff_name_only" /data/
 ```
+
+出现了个问题： 会出现因为chmod的变化引起diff变化所以type这个命令
+```
+ git config --add core.filemode false
+ 
+ ```
 找到不同的文件（香港服务器，并且写到/data/sftp/weihai_feed/maltrail/diff_name_only.txt）
 ```
 [root@iZj6cjas64u6t81eu372kvZ maltrail]# cat  /data/weihai_feed/update_git_maltrail.py
