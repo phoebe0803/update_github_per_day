@@ -14,4 +14,21 @@
 ```
  grep -rn "diff_name_only" /data/
 ```
-
+找到不同的文件（香港服务器，并且写到/data/sftp/weihai_feed/maltrail/diff_name_only.txt）
+```
+[root@iZj6cjas64u6t81eu372kvZ maltrail]# cat  /data/weihai_feed/update_git_maltrail.py
+import git
+import re
+repo = git.Repo('/data/sftp/weihai_feed/maltrail')
+remote = repo.remote()
+t=remote.fetch()
+res = repo.git.diff(t)
+diff_name_only = re.findall('diff --git a/trails/static/malware/(.*) b/', res)
+print("update file",diff_name_only)
+if len(diff_name_only)>0:
+    with open("/data/sftp/weihai_feed/maltrail/diff_name_only.txt","w") as f_new:
+        for i in diff_name_only:
+            f_new.write(i)
+            f_new.write("\n")
+p=remote.pull()
+```
