@@ -10,10 +10,6 @@
 
 
 
-在文件加中找到不同的文件
-```
- grep -rn "diff_name_only" /data/
-```
 
 出现了个问题： 会出现因为chmod的变化引起diff变化所以type这个命令
 ```
